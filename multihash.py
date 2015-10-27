@@ -1,10 +1,11 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 """Multihash drop-in replacement for hashlib.
 """
-import struct
 from enum import Enum
 import hashlib
+import struct
+
 import sha3
 
 
@@ -81,4 +82,4 @@ def new(name, data=b''):
     try:
         return _Hash(Known_Hashes[name], data)
     except KeyError as err:
-        raise ValueError('unsupported hash type ' + name) from err
+        raise ValueError('unsupported hash type ' + err.name)
